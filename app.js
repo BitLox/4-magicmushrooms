@@ -28,7 +28,7 @@ gsap.to(".box", {
 // });
 
 gsap.to(".glow-image", {
-    filter: "drop-shadow(0 0 30px rgba(0, 255, 208, 0.97))", 
+    filter: "drop-shadow(0 0 40px rgba(0, 255, 208, 0.97))", 
     duration: 1.5,
     repeat: -1, // Loop indefinitely
     yoyo: true, // Animate back and forth

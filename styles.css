@@ -9,23 +9,30 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #1b1b1b;
+  /* background: #1b1b1b; */
 }
 
-/* .box {
-  width: 50px;
-  height: 50px;
-  margin: 10px;
-} */
+body {
+  margin: 0;
+  background: #000; /* Black night sky */
+  overflow: hidden;
+}
 
-/* .glow-image {
-    box-shadow: 0 0 20px 10px rgba(255, 255, 0, 0.7); 
-} */
+.stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* So it doesn't block interactions */
+  z-index: -1; /* Behind other content */
+}
 
-/* .glow-image {
-    filter: drop-shadow(0 0 100px rgba(255, 255, 255, 0.8)); 
-} */
-
-    /* .glow-image {
-        filter: drop-shadow(0 0 100px rgba(0, 255, 255, 0.8)); 
-    } */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%; /* Make them circular */
+  opacity: 0; /* Start hidden for animation */
+}
