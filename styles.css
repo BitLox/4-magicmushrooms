@@ -1,0 +1,31 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #1b1b1b;
+}
+
+/* .box {
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+} */
+
+/* .glow-image {
+    box-shadow: 0 0 20px 10px rgba(255, 255, 0, 0.7); 
+} */
+
+/* .glow-image {
+    filter: drop-shadow(0 0 100px rgba(255, 255, 255, 0.8)); 
+} */
+
+    /* .glow-image {
+        filter: drop-shadow(0 0 100px rgba(0, 255, 255, 0.8)); 
+    } */
