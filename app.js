@@ -41,7 +41,7 @@ createStarryBackground();
 // Function to create and animate spores
 function createSpores() {
     const container = document.querySelector('.spores-container');
-    const numSpores = 10; // Reduced for performance
+    const numSpores = 5; // Reduced for performance
     const frag = document.createDocumentFragment();
 
     for (let i = 0; i < numSpores; i++) {
@@ -84,32 +84,10 @@ function createSpores() {
     });
 }
 
-// Call the spore creation after the image loads
-const image = document.querySelector('.glow-image');
-image.addEventListener('load', () => {
-    createSpores(); // Create and animate spores
-});
-
 // Animate the mushroom box
 gsap.set(".mushroom-box", {
     opacity: 0,
     scale: 0,
-});
-
-image.addEventListener('load', () => {
-    gsap.to(".mushroom-box", {
-        duration: 4,
-        scale: 1,
-        opacity: 1,
-        onComplete: () => {
-            gsap.to(".top-text, .bottom-text", {
-                opacity: 1,
-                y: 0,
-                duration: 2,
-                ease: "power2.out",
-            });
-        }
-    });
 });
 
 // Animate the text glows immediately
@@ -170,4 +148,31 @@ function gotoSection(index, direction) {
         ease: "power2.inOut",
         onComplete: () => animating = false
     });
+}
+
+// Handle image load to trigger animations and spores
+const image = document.querySelector('.glow-image');
+
+function startAnimations() {
+    gsap.to(".mushroom-box", {
+        duration: 4,
+        scale: 1,
+        opacity: 1,
+        onComplete: () => {
+            gsap.to(".top-text, .bottom-text", {
+                opacity: 1,
+                y: 0,
+                duration: 2,
+                ease: "power2.out",
+            });
+        }
+    });
+    createSpores(); // Create and animate spores
+}
+
+// If image is already loaded (cached), trigger immediately
+if (image.complete) {
+    startAnimations();
+} else {
+    image.addEventListener('load', startAnimations);
 }
