@@ -146,3 +146,29 @@ gsap.set(".top-text, .bottom-text", {
     opacity: 0,
     y: 20
 });
+
+// Smooth scroll snap with GSAP Observer
+let animating = false;
+let currentIndex = 0;
+const sections = gsap.utils.toArray(".section");
+
+Observer.create({
+  type: "wheel,touch,pointer",
+  wheelSpeed: -1,
+  onDown: () => !animating && gotoSection(currentIndex - 1, -1),
+  onUp: () => !animating && gotoSection(currentIndex + 1, 1),
+  tolerance: 10,
+  preventDefault: true
+});
+
+function gotoSection(index, direction) {
+  index = gsap.utils.clamp(0, sections.length - 1, index); // Clamp to valid range
+  animating = true;
+  currentIndex = index;
+  gsap.to(window, {
+    scrollTo: { y: sections[index].offsetTop, autoKill: false },
+    duration: 1, // Smooth animation time
+    ease: "power2.inOut", // Natural easing
+    onComplete: () => animating = false
+  });
+}

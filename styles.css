@@ -4,27 +4,33 @@
   box-sizing: border-box;
 }
 
-.container {
+body {
+  margin: 0;
+  background: #000; /* Black night sky for hero section */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  /* Removed scroll-snap-type to let JS handle snapping */
+}
+
+.section {
+  min-height: 100vh; /* Full viewport height */
+  /* Removed scroll-snap-align */
+  position: relative; /* For absolute positioning of children */
+}
+
+.hero-section {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-}
-
-body {
-  margin: 0;
-  background: #000; /* Black night sky */
-  overflow: hidden;
 }
 
 .stars-container {
-  position: fixed;
+  position: fixed; /* Stays in hero section */
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  pointer-events: none; /* So it doesn't block interactions */
-  z-index: -1; /* Behind other content */
+  pointer-events: none;
+  z-index: -1; /* Behind hero content */
 }
 
 .star {
@@ -32,8 +38,15 @@ body {
   width: 2px;
   height: 2px;
   background: white;
-  border-radius: 50%; /* Make them circular */
-  opacity: 0; /* Start hidden for animation */
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .content {
@@ -41,14 +54,14 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 2px; /* Keep tight spacing */
+  gap: 2px; /* Tight spacing */
 }
 
 .mushroom-box {
-  padding: 0; /* No padding */
-  margin: 0; /* No margin */
-  line-height: 0; /* Remove any line-height spacing */
-  position: relative; /* For positioning spores */
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+  position: relative;
 }
 
 .spores-container {
@@ -57,34 +70,56 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Behind the mushroom image */
-  overflow: hidden; /* Hide spores that move out */
+  z-index: -1; /* Behind mushroom */
+  overflow: hidden;
 }
 
 .spore {
   position: absolute;
-  width: 5px; /* Small spore size */
+  width: 5px;
   height: 5px;
-  background: #00bfff; /* Blue color */
-  border-radius: 50%; /* Circular */
-  opacity: 0; /* Start hidden */
-  filter: blur(1px); /* Subtle blur for spore effect */
+  background: #00bfff;
+  border-radius: 50%;
+  opacity: 0;
+  filter: blur(1px);
 }
 
 .glow-image {
-  display: block; /* Remove default image spacing */
-  max-width: 600px; /* Your adjusted size */
-  width: 100%; /* Responsive width */
-  height: auto; /* Maintain aspect ratio */
-  padding: 0; /* No padding */
-  margin: 0; /* No margin */
+  display: block;
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  margin: 0;
 }
 
 .top-text, .bottom-text {
-  color: #fff; /* White text to match the starry theme */
-  font-family: 'Orbitron', sans-serif; /* Google Font */
-  font-size: 2.5rem; /* Your adjusted size */
-  margin: 0; /* No margin */
-  text-shadow: 0 0 50px rgba(0, 255, 208, 1), 0 0 20px rgba(0, 255, 208, 0.8); /* Strong, layered fallback glow */
-  z-index: 10; /* Ensure text is above other elements */
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  margin: 0;
+  text-shadow: 0 0 50px rgba(0, 255, 208, 1), 0 0 20px rgba(0, 255, 208, 0.8);
+  z-index: 10;
+}
+
+.placeholder-section {
+  background: #fff; /* White background for placeholder */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.placeholder-content {
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  color: #000;
+}
+
+.placeholder-content h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.placeholder-content p {
+  font-size: 1.2rem;
 }
