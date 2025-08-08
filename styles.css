@@ -104,16 +104,29 @@ body {
 }
 
 .placeholder-section {
-  background: #fff; /* White background for placeholder */
+  position: relative; /* For video positioning */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the section, maintain aspect ratio */
+  z-index: -1; /* Behind placeholder content */
+  opacity: 0.8; /* Slight transparency for content readability */
+}
+
 .placeholder-content {
   text-align: center;
   font-family: 'Orbitron', sans-serif;
-  color: #000;
+  color: #fff; /* White for contrast */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); /* Shadow for readability */
+  z-index: 1; /* Above video */
 }
 
 .placeholder-content h1 {
