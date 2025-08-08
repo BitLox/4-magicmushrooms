@@ -48,6 +48,27 @@ body {
   padding: 0; /* No padding */
   margin: 0; /* No margin */
   line-height: 0; /* Remove any line-height spacing */
+  position: relative; /* For positioning spores */
+}
+
+.spores-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Behind the mushroom image */
+  overflow: hidden; /* Hide spores that move out */
+}
+
+.spore {
+  position: absolute;
+  width: 5px; /* Small spore size */
+  height: 5px;
+  background: #00bfff; /* Blue color */
+  border-radius: 50%; /* Circular */
+  opacity: 0; /* Start hidden */
+  filter: blur(1px); /* Subtle blur for spore effect */
 }
 
 .glow-image {
