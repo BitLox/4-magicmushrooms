@@ -124,32 +124,6 @@ gsap.set(".top-text, .bottom-text", {
     y: 20
 });
 
-// Smooth scroll snap with GSAP Observer
-let animating = false;
-let currentIndex = 0;
-const sections = gsap.utils.toArray(".section");
-
-Observer.create({
-    type: "wheel,touch,pointer",
-    wheelSpeed: -1,
-    onDown: () => !animating && gotoSection(currentIndex - 1, -1),
-    onUp: () => !animating && gotoSection(currentIndex + 1, 1),
-    tolerance: 10,
-    preventDefault: true
-});
-
-function gotoSection(index, direction) {
-    index = gsap.utils.clamp(0, sections.length - 1, index); // Clamp to valid range
-    animating = true;
-    currentIndex = index;
-    gsap.to(window, {
-        scrollTo: { y: sections[index].offsetTop, autoKill: false },
-        duration: 1,
-        ease: "power2.inOut",
-        onComplete: () => animating = false
-    });
-}
-
 // Handle image load to trigger animations and spores
 const image = document.querySelector('.glow-image');
 
@@ -175,4 +149,47 @@ if (image.complete) {
     startAnimations();
 } else {
     image.addEventListener('load', startAnimations);
+}
+
+// Smooth scroll snap with GSAP Observer
+let animating = false;
+let currentIndex = 0;
+const sections = gsap.utils.toArray(".section");
+let lastScrollTime = 0;
+const debounceTime = 200; // Debounce duration in ms
+
+Observer.create({
+    type: "wheel,touch,pointer",
+    wheelSpeed: -0.5, // Reduced sensitivity
+    onDown: () => {
+        const now = Date.now();
+        if (!animating && now - lastScrollTime > debounceTime) {
+            lastScrollTime = now;
+            gotoSection(currentIndex - 1, -1);
+        }
+    },
+    onUp: () => {
+        const now = Date.now();
+        if (!animating && now - lastScrollTime > debounceTime) {
+            lastScrollTime = now;
+            gotoSection(currentIndex + 1, 1);
+        }
+    },
+    tolerance: 50, // Increased for less sensitivity
+    preventDefault: true
+});
+
+function gotoSection(index, direction) {
+    index = gsap.utils.clamp(0, sections.length - 1, index); // Clamp to valid range
+    if (index === currentIndex) return; // Prevent re-snapping to same section
+    animating = true;
+    currentIndex = index;
+    gsap.to(window, {
+        scrollTo: { y: sections[index].offsetTop, autoKill: false },
+        duration: 1.2, // Slightly longer for smoother feel
+        ease: "power2.inOut",
+        onComplete: () => {
+            animating = false;
+        }
+    });
 }
