@@ -1,65 +1,25 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Magic Mushroom</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="stars-container"></div>
-    <h1 id="title">MAGIC MUSHROOM COIN</h1>
-    <section class="container">
-      <div class="box glow-image"><img src="Mushroom1_bigger.png" alt=""></div>
-    </section>
-    <p id="tagline">Sprout Wealth in a Decentralized World</p>
-
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-    <script src="app.js"></script>
-      <script>
-    // Function to create the starry background
-    function createStarryBackground() {
-      const container = document.querySelector('.stars-container');
-      const numStars = 300; // Adjust for more/less stars
-      const frag = document.createDocumentFragment(); // For performance: batch DOM additions
-
-      for (let i = 0; i < numStars; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-
-        // Random position
-        gsap.set(star, {
-          x: Math.random() * window.innerWidth,
-          y: Math.random() * window.innerHeight,
-          scale: 0.5 // Start small
-        });
-
-        frag.appendChild(star);
-      }
-
-      container.appendChild(frag); // Add all at once
-
-      // Animate the stars
-      const stars = gsap.utils.toArray('.star');
-      stars.forEach(star => {
-        gsap.to(star, {
-          opacity: 1,
-          scale: 1,
-          duration: Math.random() * 2 + 1, // Random duration between 1-3s
-          delay: Math.random() * 3, // Random start delay
-          repeat: -1, // Loop forever
-          yoyo: true, // Go back to start values
-          ease: 'sine.inOut' // Smooth easing
-        });
-      });
-    }
-
-    // Run on page load
-    window.addEventListener('DOMContentLoaded', createStarryBackground);
-  </script>
-
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Starry Background</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Add Google Fonts link for Orbitron -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="stars-container"></div>
+  <div class="container">
+    <div class="content">
+      <p class="top-text">MAGIC MUSHROOM COIN</p>
+      <div class="mushroom-box">
+        <img class="glow-image" src="Mushroom1_bigger.png" alt="Glowing Mushroom">
+      </div>
+      <p class="bottom-text">Sprout Wealth in a Decentralized World</p>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="app.js"></script>
+</body>
 </html>

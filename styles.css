@@ -9,7 +9,6 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  /* background: #1b1b1b; */
 }
 
 body {
@@ -35,4 +34,36 @@ body {
   background: white;
   border-radius: 50%; /* Make them circular */
   opacity: 0; /* Start hidden for animation */
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px; /* Keep tight spacing */
+}
+
+.mushroom-box {
+  padding: 0; /* No padding */
+  margin: 0; /* No margin */
+  line-height: 0; /* Remove any line-height spacing */
+}
+
+.glow-image {
+  display: block; /* Remove default image spacing */
+  max-width: 600px; /* Your adjusted size */
+  width: 100%; /* Responsive width */
+  height: auto; /* Maintain aspect ratio */
+  padding: 0; /* No padding */
+  margin: 0; /* No margin */
+}
+
+.top-text, .bottom-text {
+  color: #fff; /* White text to match the starry theme */
+  font-family: 'Orbitron', sans-serif; /* Google Font */
+  font-size: 2.5rem; /* Your adjusted size */
+  margin: 0; /* No margin */
+  text-shadow: 0 0 50px rgba(0, 255, 208, 1), 0 0 20px rgba(0, 255, 208, 0.8); /* Strong, layered fallback glow */
+  z-index: 10; /* Ensure text is above other elements */
 }
