@@ -41,7 +41,7 @@ createStarryBackground();
 // Function to create and animate spores
 function createSpores() {
     const container = document.querySelector('.spores-container');
-    const numSpores = 20; // Number of spores
+    const numSpores = 10; // Number of spores
     const frag = document.createDocumentFragment();
 
     for (let i = 0; i < numSpores; i++) {
