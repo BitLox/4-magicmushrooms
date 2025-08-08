@@ -41,17 +41,17 @@ createStarryBackground();
 // Function to create and animate spores
 function createSpores() {
     const container = document.querySelector('.spores-container');
-    const numSpores = 10; // Number of spores
+    const numSpores = 10; // Reduced for performance
     const frag = document.createDocumentFragment();
 
     for (let i = 0; i < numSpores; i++) {
         const spore = document.createElement('div');
         spore.className = 'spore';
 
-        // Initial position behind the mushroom (centered at bottom)
+        // Initial position at center of the page
         gsap.set(spore, {
             left: '50%', // Center horizontally
-            top: '70%', // Start near the bottom of the mushroom
+            top: '50%', // Center vertically
             x: -2.5, // Center offset for spore size
             y: -2.5,
             scale: 0.5, // Start small
@@ -69,13 +69,13 @@ function createSpores() {
         gsap.to(spore, {
             opacity: 1, // Fade in
             x: Math.random() * 200 - 100, // Random horizontal movement
-            y: Math.random() * -200 - 100, // Move upward and outward (emanating)
+            y: Math.random() * -200 - 100, // Move upward and outward
             scale: 1.5, // Grow slightly
             duration: Math.random() * 2 + 2, // Random duration 2-4s
-            delay: Math.random() * 1 + index * 0.2, // Staggered start with offset
+            delay: Math.random() * 1 + index * 0.2, // Staggered start
             ease: 'power1.out',
-            repeat: -1, // Loop forever
-            yoyo: false, // One-way animation
+            repeat: -1,
+            yoyo: false,
             onRepeat: () => {
                 // Reset position for next cycle
                 gsap.set(spore, { opacity: 0, x: 0, y: 0, scale: 0.5 });
@@ -84,7 +84,7 @@ function createSpores() {
     });
 }
 
-// Call the spore creation after the image loads (to sync with mushroom)
+// Call the spore creation after the image loads
 const image = document.querySelector('.glow-image');
 image.addEventListener('load', () => {
     createSpores(); // Create and animate spores
@@ -96,7 +96,6 @@ gsap.set(".mushroom-box", {
     scale: 0,
 });
 
-// Wait for the image to load before animating
 image.addEventListener('load', () => {
     gsap.to(".mushroom-box", {
         duration: 4,
@@ -115,7 +114,7 @@ image.addEventListener('load', () => {
 
 // Animate the text glows immediately
 gsap.to(".top-text", {
-    textShadow: "0 0 100px rgba(0, 255, 208, 1), 0 0 20px rgba(0, 255, 208, 0.8)", // 5x stronger, layered glow
+    textShadow: "0 0 100px rgba(0, 255, 208, 1), 0 0 20px rgba(0, 255, 208, 0.8)",
     duration: 1.5,
     repeat: -1,
     yoyo: true,
@@ -124,7 +123,7 @@ gsap.to(".top-text", {
 });
 
 gsap.to(".bottom-text", {
-    textShadow: "0 0 100px rgba(0, 255, 208, 1), 0 0 20px rgba(0, 255, 208, 0.8)", // 5x stronger, layered glow
+    textShadow: "0 0 100px rgba(0, 255, 208, 1), 0 0 20px rgba(0, 255, 208, 0.8)",
     duration: 1.5,
     repeat: -1,
     yoyo: true,
@@ -134,7 +133,7 @@ gsap.to(".bottom-text", {
 
 // Animate the glow effect
 gsap.to(".glow-image", {
-    filter: "drop-shadow(0 0 80px rgba(0, 255, 208, 1))", // Increased to match text
+    filter: "drop-shadow(0 0 80px rgba(0, 255, 208, 1))",
     duration: 1.5,
     repeat: -1,
     yoyo: true,
@@ -153,22 +152,22 @@ let currentIndex = 0;
 const sections = gsap.utils.toArray(".section");
 
 Observer.create({
-  type: "wheel,touch,pointer",
-  wheelSpeed: -1,
-  onDown: () => !animating && gotoSection(currentIndex - 1, -1),
-  onUp: () => !animating && gotoSection(currentIndex + 1, 1),
-  tolerance: 10,
-  preventDefault: true
+    type: "wheel,touch,pointer",
+    wheelSpeed: -1,
+    onDown: () => !animating && gotoSection(currentIndex - 1, -1),
+    onUp: () => !animating && gotoSection(currentIndex + 1, 1),
+    tolerance: 10,
+    preventDefault: true
 });
 
 function gotoSection(index, direction) {
-  index = gsap.utils.clamp(0, sections.length - 1, index); // Clamp to valid range
-  animating = true;
-  currentIndex = index;
-  gsap.to(window, {
-    scrollTo: { y: sections[index].offsetTop, autoKill: false },
-    duration: 1, // Smooth animation time
-    ease: "power2.inOut", // Natural easing
-    onComplete: () => animating = false
-  });
+    index = gsap.utils.clamp(0, sections.length - 1, index); // Clamp to valid range
+    animating = true;
+    currentIndex = index;
+    gsap.to(window, {
+        scrollTo: { y: sections[index].offsetTop, autoKill: false },
+        duration: 1,
+        ease: "power2.inOut",
+        onComplete: () => animating = false
+    });
 }
