@@ -3,46 +3,43 @@
   margin: 0;
   box-sizing: border-box;
 }
-
 @media (max-width: 768px) {
-    .glow-image {
-        max-width: 400px;
-    }
-    .top-text, .bottom-text {
-        font-size: 1.8rem;
-        text-shadow: 0 0 30px rgba(0, 255, 208, 1), 0 0 10px rgba(0, 255, 208, 0.8);
-    }
-    .spore {
-        width: 3px;
-        height: 3px;
-    }
-    .section2-content h1, .section3-content h1 {
-        font-size: 1.5rem;
-    }
-    .section2-content p, .section3-content p {
-        font-size: 1rem;
-    }
+  .glow-image {
+    max-width: 400px;
+  }
+  .top-text,
+  .bottom-text {
+    font-size: 1.8rem;
+    text-shadow: 0 0 30px rgba(0, 255, 208, 1), 0 0 10px rgba(0, 255, 208, 0.8);
+  }
+  .spore {
+    width: 3px;
+    height: 3px;
+  }
+  .section2-content h1,
+  .section3-content h1 {
+    font-size: 1.5rem;
+  }
+  .section2-content p,
+  .section3-content p {
+    font-size: 1rem;
+  }
 }
-
-
 body {
   margin: 0;
   background: #000; /* Black night sky for hero section */
   overflow-x: hidden; /* Prevent horizontal scroll */
 }
-
 .section {
   min-height: 100vh; /* Full viewport height */
   position: relative; /* For absolute positioning of children */
 }
-
 .hero-section {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-.stars-container {
+canvas#thpace-bg {
   position: fixed; /* Stays in hero section */
   top: 0;
   left: 0;
@@ -51,23 +48,12 @@ body {
   pointer-events: none;
   z-index: -1; /* Behind hero content */
 }
-
-.star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  border-radius: 50%;
-  opacity: 0;
-}
-
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
-
 .content {
   display: flex;
   flex-direction: column;
@@ -76,7 +62,6 @@ body {
   gap: 2px; /* Tight spacing */
   position: relative; /* For spores positioning */
 }
-
 .mushroom-box {
   padding: 0;
   margin: 0;
@@ -84,7 +69,6 @@ body {
   position: relative;
   z-index: 15; /* Above spores */
 }
-
 .spores-container {
   position: absolute;
   top: 0;
@@ -94,7 +78,6 @@ body {
   z-index: 8; /* Below text, below mushroom */
   overflow: hidden;
 }
-
 .spore {
   position: absolute;
   width: 5px;
@@ -104,7 +87,6 @@ body {
   opacity: 0;
   filter: blur(1px);
 }
-
 .glow-image {
   display: block;
   max-width: 600px;
@@ -114,23 +96,21 @@ body {
   margin: 0;
   z-index: 15; /* Above spores */
 }
-
-.top-text, .bottom-text {
+.top-text,
+.bottom-text {
   color: #fff;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-size: 2.5rem;
   margin: 0;
   text-shadow: 0 0 50px rgba(0, 255, 208, 1), 0 0 20px rgba(0, 255, 208, 0.8);
   z-index: 10; /* Above spores */
 }
-
 .section2 {
   position: relative; /* For video positioning */
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .video-bg {
   position: absolute;
   top: 0;
@@ -141,43 +121,40 @@ body {
   z-index: -1; /* Behind section2 content */
   opacity: 0.8; /* Slight transparency for content readability */
 }
-
 .section2-content {
   text-align: center;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   color: #fff; /* White for contrast */
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); /* Shadow for readability */
   z-index: 1; /* Above video */
 }
-
 .section2-content h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
-
 .section2-content p {
   font-size: 1.2rem;
 }
-
 .section3 {
-  background: linear-gradient(180deg, #1b1b1b, #000); /* Dark gradient for contrast */
+  background: linear-gradient(
+    180deg,
+    #1b1b1b,
+    #000
+  ); /* Dark gradient for contrast */
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .section3-content {
   text-align: center;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   color: #fff; /* White for contrast */
   text-shadow: 0 0 10px rgba(0, 255, 208, 0.8); /* Glow for consistency */
 }
-
 .section3-content h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
-
 .section3-content p {
   font-size: 1.2rem;
 }
