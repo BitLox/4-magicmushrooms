@@ -87,13 +87,24 @@ gsap.to(".glow-image", {
   yoyo: true,
   ease: "power1.inOut",
 });
-// Animate the rotation for halo at 3 seconds (20 RPM)
+// Set initial halo position and animate rotation
+gsap.set(".halo-image", {
+  xPercent: -50,
+  yPercent: -50,
+  transformOrigin: "center center"
+});
 gsap.to(".halo-image", {
   rotation: 360, // Full rotation in degrees
   duration: 3, // 20 RPM = 1 rotation every 3 seconds
   repeat: -1, // Infinite loop
   ease: "none", // Steady rotation
-  transformOrigin: "center center" // Ensure rotation pivots from the center
+  force3D: true, // Enable hardware acceleration
+  onStart: () => console.log("Halo rotation animation started"),
+  onUpdate: () => {
+    const style = window.getComputedStyle(document.querySelector(".halo-image"));
+    const transform = style.transform || style.webkitTransform;
+    console.log("Halo transform:", transform); // Log full transform matrix
+  }
 });
 // Set initial text state
 gsap.set(".top-text, .bottom-text", {

@@ -9,7 +9,6 @@
   }
   .halo-image {
     width: 200px !important; /* Reduced for mobile to fit better */
-    transform: translate(-50%, -50%) translateY(-30%) !important; /* Increased offset to center on cap */
   }
   .top-text,
   .bottom-text {
@@ -35,7 +34,6 @@
   }
   .halo-image {
     width: 150px !important; /* Further reduced for small screens */
-    transform: translate(-50%, -50%) translateY(-25%) !important; /* Adjusted offset */
   }
   .top-text,
   .bottom-text {
@@ -128,7 +126,6 @@ canvas#thpace-bg {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) translateY(0px) !important; /* Reset to base, adjust if needed */
   z-index: 10; /* Behind glow-image, above spores */
 }
 .top-text,
