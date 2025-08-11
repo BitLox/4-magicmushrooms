@@ -5,10 +5,11 @@
 }
 @media (max-width: 768px) {
   .glow-image {
-    max-width: 160px !important; /* 60% smaller than 400px */
+    max-width: 160px !important; /* 60% smaller than 400px, base size */
+    width: 22vw; /* Dynamic scaling, approx 160px at 720px viewport */
   }
   .halo-image {
-    width: 260px !important; /* 325px - 20% */
+    width: 32vw !important; /* Proportional to glow-image, ~260px at 720px, adjustable */
   }
   .top-text,
   .bottom-text {
@@ -26,6 +27,19 @@
   .section2-content p,
   .section3-content p {
     font-size: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .glow-image {
+    max-width: 120px !important; /* Smaller for tiny screens */
+    width: 40vw; /* Scales down further */
+  }
+  .halo-image {
+    width: 58vw !important; /* Proportional adjustment */
+  }
+  .top-text,
+  .bottom-text {
+    font-size: 1.5rem;
   }
 }
 body {
@@ -71,8 +85,11 @@ canvas#thpace-bg {
   line-height: 0;
   position: relative;
   z-index: 15; /* Above spores */
-  /* Add padding to prevent clipping */
-  padding: 10px;
+  /* Add flex to constrain children on mobile */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0; /* Prevent overflow */
 }
 .spores-container {
   position: absolute;
@@ -95,7 +112,7 @@ canvas#thpace-bg {
 .glow-image {
   display: block;
   max-width: 240px !important; /* Matches 706x768 scaled down */
-  width: 100%;
+  width: 33vw; /* Dynamic scaling, approx 240px at 720px viewport */
   height: auto;
   padding: 0;
   margin: 0;
@@ -105,7 +122,7 @@ canvas#thpace-bg {
 }
 .halo-image {
   display: block;
-  width: 391px !important; /* 489px - 20% */
+  width: 48vw !important; /* Proportional to glow-image, ~391px at 720px */
   height: auto !important;
   max-width: none !important;
   padding: 0;
@@ -115,7 +132,6 @@ canvas#thpace-bg {
   left: 50%;
   transform: translate(-50%, -50%); /* Center behind glow-image */
   z-index: 10; /* Behind glow-image, above spores */
-  /* Removed glow to avoid flicker contribution */
 }
 .top-text,
 .bottom-text {
