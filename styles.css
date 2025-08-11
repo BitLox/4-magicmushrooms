@@ -8,8 +8,8 @@
     max-width: 160px !important; /* 60% smaller than 400px */
   }
   .halo-image {
-    width: 180px !important; /* Reduced for mobile to avoid being too large */
-    transform: translate(-50%, -50%) translateY(-40%); /* Shifted up more to center on cap */
+    width: 200px !important; /* Reduced for mobile to fit better */
+    transform: translate(-50%, -50%) translateY(-50%); /* Increased offset to center on cap */
   }
   .top-text,
   .bottom-text {
@@ -34,8 +34,8 @@
     max-width: 120px !important; /* Smaller for tiny screens */
   }
   .halo-image {
-    width: 140px !important; /* Further reduced for small screens */
-    transform: translate(-50%, -50%) translateY(-35%); /* Adjusted offset */
+    width: 150px !important; /* Further reduced for small screens */
+    transform: translate(-50%, -50%) translateY(-45%); /* Adjusted offset */
   }
   .top-text,
   .bottom-text {
@@ -120,7 +120,7 @@ canvas#thpace-bg {
 }
 .halo-image {
   display: block;
-  width: 360px !important; /* Reduced for desktop to make it smaller */
+  width: 360px !important; /* Your perfect desktop size */
   height: auto !important;
   max-width: none !important;
   padding: 0;
@@ -128,7 +128,7 @@ canvas#thpace-bg {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) translateY(-20px); /* Shifted up for desktop to center on cap */
+  transform: translate(-50%, -50%) translateY(-20px); /* Your desktop offset */
   z-index: 10; /* Behind glow-image, above spores */
 }
 .top-text,
