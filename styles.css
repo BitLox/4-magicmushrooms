@@ -6,11 +6,10 @@
 @media (max-width: 768px) {
   .glow-image {
     max-width: 160px !important; /* 60% smaller than 400px */
-    width: 22vw; /* Dynamic scaling, approx 160px at 720px viewport */
   }
   .halo-image {
-    width: 32vw !important; /* Proportional to glow-image, ~260px at 720px */
-    transform: translate(-50%, -50%) translateY(-20%); /* Vertical offset to align with cap */
+    width: 180px !important; /* Reduced for mobile to avoid being too large */
+    transform: translate(-50%, -50%) translateY(-20%); /* Vertical offset to center on cap */
   }
   .top-text,
   .bottom-text {
@@ -33,11 +32,10 @@
 @media (max-width: 480px) {
   .glow-image {
     max-width: 120px !important; /* Smaller for tiny screens */
-    width: 40vw; /* Scales down further */
   }
   .halo-image {
-    width: 58vw !important; /* Proportional adjustment */
-    transform: translate(-50%, -50%) translateY(-15%); /* Slightly less offset for very small screens */
+    width: 140px !important; /* Further reduced for small screens */
+    transform: translate(-50%, -50%) translateY(-15%); /* Adjusted offset */
   }
   .top-text,
   .bottom-text {
@@ -113,7 +111,6 @@ canvas#thpace-bg {
 .glow-image {
   display: block;
   max-width: 240px !important; /* Matches 706x768 scaled down */
-  width: 33vw; /* Dynamic scaling, approx 240px at 720px viewport */
   height: auto;
   padding: 0;
   margin: 0;
@@ -123,7 +120,7 @@ canvas#thpace-bg {
 }
 .halo-image {
   display: block;
-  width: 48vw !important; /* Proportional to glow-image, ~391px at 720px */
+  width: 320px !important; /* Reduced for desktop to make it smaller */
   height: auto !important;
   max-width: none !important;
   padding: 0;
@@ -131,7 +128,7 @@ canvas#thpace-bg {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Base center, no offset on desktop */
+  transform: translate(-50%, -50%); /* Center behind glow-image */
   z-index: 10; /* Behind glow-image, above spores */
 }
 .top-text,
