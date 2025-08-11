@@ -1,0 +1,28 @@
+# Ignore all files ending with .log
+*.log
+
+# Ignore the 'node_modules' directory
+node_modules/
+
+# Ignore the '.env' file
+.env
+
+# Ignore build output directories
+build/
+dist/
+
+# Ignore specific files
+my_secret_key.pem
+database.sqlite
+
+# Ignore all files in the 'temp/' directory, but not the directory itself
+temp/*
+
+# Ignore all files in the 'temp/' directory and the directory itself
+temp/
+
+# Exclude a specific file from a previously ignored pattern
+# (e.g., ignore all .log files except 'important.log')
+!important.log
+
+.DS_Store

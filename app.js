@@ -85,8 +85,8 @@ gsap.set(".top-text, .bottom-text", {
 const image = document.querySelector(".glow-image");
 function startAnimations() {
   gsap.to(".mushroom-box", {
-    duration: 4,
-    scale: 1,
+    duration: 2,
+    scale: 0.7,
     opacity: 1,
     onComplete: () => {
       gsap.to(".top-text, .bottom-text", {
