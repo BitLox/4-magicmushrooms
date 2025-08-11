@@ -120,7 +120,7 @@ canvas#thpace-bg {
 }
 .halo-image {
   display: block;
-  width: 320px !important; /* Reduced for desktop to make it smaller */
+  width: 360px !important; /* Reduced for desktop to make it smaller */
   height: auto !important;
   max-width: none !important;
   padding: 0;
