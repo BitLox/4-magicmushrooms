@@ -94,13 +94,14 @@ gsap.set(".halo-image", {
   transformOrigin: "center center"
 });
 gsap.to(".halo-image", {
-  rotation: 360, // Full rotation in degrees
+  // rotation: 360, // Full rotation in degrees
   rotationY: 360,
   duration: 3, // 20 RPM = 1 rotation every 3 seconds
   repeat: 1, // Infinite loop
   ease: "none", // Steady rotation
   force3D: true, // Enable hardware acceleration
 });
+
 gsap.to(".halo-image", {
   rotation: 360, // Full rotation in degrees
   duration: 3, // 20 RPM = 1 rotation every 3 seconds
