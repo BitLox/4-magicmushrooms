@@ -5,7 +5,10 @@
 }
 @media (max-width: 768px) {
   .glow-image {
-    max-width: 400px;
+    max-width: 160px !important; /* 60% smaller than 400px */
+  }
+  .halo-image {
+    width: 260px !important; /* 325px - 20% */
   }
   .top-text,
   .bottom-text {
@@ -46,7 +49,7 @@ canvas#thpace-bg {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: -1; /* Behind hero content */
+  z-index: -2; /* Behind everything */
 }
 .container {
   display: flex;
@@ -68,6 +71,8 @@ canvas#thpace-bg {
   line-height: 0;
   position: relative;
   z-index: 15; /* Above spores */
+  /* Add padding to prevent clipping */
+  padding: 10px;
 }
 .spores-container {
   position: absolute;
@@ -89,12 +94,28 @@ canvas#thpace-bg {
 }
 .glow-image {
   display: block;
-  max-width: 600px;
+  max-width: 240px !important; /* Matches 706x768 scaled down */
   width: 100%;
   height: auto;
   padding: 0;
   margin: 0;
-  z-index: 15; /* Above spores */
+  position: relative;
+  z-index: 15; /* Above halo */
+  filter: drop-shadow(0 0 20px rgba(0, 255, 208, 0.8)); /* Fallback glow */
+}
+.halo-image {
+  display: block;
+  width: 391px !important; /* 489px - 20% */
+  height: auto !important;
+  max-width: none !important;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center behind glow-image */
+  z-index: 10; /* Behind glow-image, above spores */
+  /* Removed glow to avoid flicker contribution */
 }
 .top-text,
 .bottom-text {

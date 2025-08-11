@@ -1,10 +1,21 @@
-// Initialize ThpaceGL background
+// Register plugins at the top
+gsap.registerPlugin(ScrollToPlugin);
+
+// Initialize Thpace background
 const canvas = document.querySelector("#thpace-bg");
 const settings = {
   colors: ["#310078", "#000000", "#681884"],
   triangleSize: 90,
 };
-ThpaceGL.create(canvas, settings);
+try {
+  if (typeof Thpace !== 'undefined') {
+    Thpace.create(canvas, settings);
+  } else {
+    console.error("Thpace not loaded. Check CDN or script inclusion.");
+  }
+} catch (e) {
+  console.error("Error initializing Thpace:", e);
+}
 
 // Function to create and animate spores
 function createSpores() {
@@ -68,7 +79,7 @@ gsap.to(".bottom-text", {
   ease: "power1.inOut",
   delay: 0.75,
 });
-// Animate the glow effect
+// Animate the glow effect for main image
 gsap.to(".glow-image", {
   filter: "drop-shadow(0 0 80px rgba(0, 255, 208, 1))",
   duration: 1.5,
@@ -76,13 +87,23 @@ gsap.to(".glow-image", {
   yoyo: true,
   ease: "power1.inOut",
 });
+// Animate the rotation for halo at 3 seconds (20 RPM)
+gsap.to(".halo-image", {
+  rotation: 360, // Full rotation in degrees
+  duration: 3, // 20 RPM = 1 rotation every 3 seconds
+  repeat: -1, // Infinite loop
+  ease: "none", // Steady rotation
+  transformOrigin: "center center" // Ensure rotation pivots from the center
+});
 // Set initial text state
 gsap.set(".top-text, .bottom-text", {
   opacity: 0,
   y: 20,
 });
-// Handle image load to trigger animations and spores
-const image = document.querySelector(".glow-image");
+// Handle image loads (wait for both)
+const glowImage = document.querySelector(".glow-image");
+const haloImage = document.querySelector(".halo-image");
+
 function startAnimations() {
   gsap.to(".mushroom-box", {
     duration: 2,
@@ -99,12 +120,18 @@ function startAnimations() {
   });
   createSpores(); // Create and animate spores
 }
-// If image is already loaded (cached), trigger immediately
-if (image.complete) {
+
+// Wait for both images to load
+Promise.all([
+  glowImage.complete ? Promise.resolve() : new Promise(resolve => glowImage.addEventListener("load", resolve)),
+  haloImage.complete ? Promise.resolve() : new Promise(resolve => haloImage.addEventListener("load", resolve))
+]).then(() => {
   startAnimations();
-} else {
-  image.addEventListener("load", startAnimations);
-}
+}).catch(e => {
+  console.error("Error loading images:", e);
+  startAnimations(); // Proceed anyway to avoid stalling
+});
+
 // Smooth scroll snap with GSAP Observer
 let animating = false;
 let currentIndex = 0;
