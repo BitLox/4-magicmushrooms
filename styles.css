@@ -5,11 +5,12 @@
 }
 @media (max-width: 768px) {
   .glow-image {
-    max-width: 160px !important; /* 60% smaller than 400px, base size */
+    max-width: 160px !important; /* 60% smaller than 400px */
     width: 22vw; /* Dynamic scaling, approx 160px at 720px viewport */
   }
   .halo-image {
-    width: 32vw !important; /* Proportional to glow-image, ~260px at 720px, adjustable */
+    width: 32vw !important; /* Proportional to glow-image, ~260px at 720px */
+    transform: translate(-50%, -50%) translateY(-20%); /* Vertical offset to align with cap */
   }
   .top-text,
   .bottom-text {
@@ -36,6 +37,7 @@
   }
   .halo-image {
     width: 58vw !important; /* Proportional adjustment */
+    transform: translate(-50%, -50%) translateY(-15%); /* Slightly less offset for very small screens */
   }
   .top-text,
   .bottom-text {
@@ -85,7 +87,6 @@ canvas#thpace-bg {
   line-height: 0;
   position: relative;
   z-index: 15; /* Above spores */
-  /* Add flex to constrain children on mobile */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,7 +131,7 @@ canvas#thpace-bg {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Center behind glow-image */
+  transform: translate(-50%, -50%); /* Base center, no offset on desktop */
   z-index: 10; /* Behind glow-image, above spores */
 }
 .top-text,
