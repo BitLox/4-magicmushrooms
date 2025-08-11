@@ -95,6 +95,14 @@ gsap.set(".halo-image", {
 });
 gsap.to(".halo-image", {
   rotation: 360, // Full rotation in degrees
+  rotationY: 360,
+  duration: 3, // 20 RPM = 1 rotation every 3 seconds
+  repeat: 1, // Infinite loop
+  ease: "none", // Steady rotation
+  force3D: true, // Enable hardware acceleration
+});
+gsap.to(".halo-image", {
+  rotation: 360, // Full rotation in degrees
   duration: 3, // 20 RPM = 1 rotation every 3 seconds
   repeat: -1, // Infinite loop
   ease: "none", // Steady rotation
@@ -106,6 +114,9 @@ gsap.to(".halo-image", {
     console.log("Halo transform:", transform); // Log full transform matrix
   }
 });
+
+
+
 // Set initial text state
 gsap.set(".top-text, .bottom-text", {
   opacity: 0,
